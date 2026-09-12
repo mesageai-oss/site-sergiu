@@ -1,0 +1,120 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Loghin Bau palette — dark editorial with warm bronze accent */
+  --color-ink: #131210;
+  --color-ink-soft: #1b1915;
+  --color-ink-line: #2c2820;
+  --color-cream: #f3f0e8;
+  --color-cream-soft: #e7e2d6;
+  --color-cream-muted: #726b5d;
+  --color-ink-muted: #a79e8d;
+  --color-bronze: #b98d57;
+  --color-bronze-soft: #cba876;
+  --color-line: #d6cfc0;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+}
+
+:root {
+  color-scheme: light;
+  --background: #f3f0e8;
+  --foreground: #1a1711;
+  --card: #f3f0e8;
+  --card-foreground: #1a1711;
+  --popover: #1b1915;
+  --popover-foreground: #f3f0e8;
+  --primary: #b98d57;
+  --primary-foreground: #131210;
+  --secondary: #e7e2d6;
+  --secondary-foreground: #1a1711;
+  --muted: #e7e2d6;
+  --muted-foreground: #726b5d;
+  --accent: #b98d57;
+  --accent-foreground: #131210;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #d6cfc0;
+  --input: #d6cfc0;
+  --ring: #b98d57;
+  --radius: 0px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Visible bronze focus ring on every interactive element */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-bronze);
+    outline-offset: 3px;
+    border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Deliberate reveal — used sparingly, disabled under reduced motion */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
