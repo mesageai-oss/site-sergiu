@@ -12,7 +12,7 @@ export function StatsBar() {
         {STATS.map((stat, i) => (
           <div
             key={stat.label}
-            className={`flex flex-col gap-2 px-6 py-8 md:px-8 md:py-10 ${
+            className={`flex min-w-0 flex-col gap-2 px-6 py-8 md:px-8 md:py-10 ${
               i % 2 === 1 ? 'border-l border-ink-line' : ''
             } ${i >= 2 ? 'border-t border-ink-line md:border-t-0' : ''} ${
               i === 2 ? 'md:border-l' : ''
@@ -21,7 +21,7 @@ export function StatsBar() {
             <span className="font-serif text-4xl leading-none text-bronze md:text-5xl">
               {stat.value}
             </span>
-            <span className="text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+            <span className="break-words text-[11px] uppercase tracking-[0.18em] text-ink-muted">
               {stat.label}
             </span>
           </div>
